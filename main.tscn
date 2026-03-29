@@ -1,0 +1,34 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpaej6ew877wx"]
+
+[ext_resource type="PackedScene" uid="uid://dsfgcwu57l2or" path="res://overworldtilemap.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://l54q0vtknxog" path="res://npc_2.gd" id="1_7mycd"]
+[ext_resource type="PackedScene" uid="uid://b7clklaklcvu3" path="res://player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bsamy5105cdow" path="res://npc.tscn" id="4_272bh"]
+[ext_resource type="PackedScene" uid="uid://s6sypq3x682c" path="res://npc_2.tscn" id="5_5vw27"]
+[ext_resource type="PackedScene" uid="uid://crn1ffvkmfjgs" path="res://npc_3.tscn" id="6_kek77"]
+[ext_resource type="PackedScene" uid="uid://obs21lqcwl5h" path="res://dialogue_layer.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://xj8bka58jfmq" path="res://door.tscn" id="8_5vw27"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_7mycd")
+
+[node name="overworldtilemap" parent="." instance=ExtResource("1_0xm2m")]
+
+[node name="Player" parent="." instance=ExtResource("2_0xm2m")]
+
+[node name="NPC" parent="." instance=ExtResource("4_272bh")]
+position = Vector2(-73, 64)
+
+[node name="NPC2" parent="." instance=ExtResource("5_5vw27")]
+position = Vector2(369, -237)
+
+[node name="NPC3" parent="." instance=ExtResource("6_kek77")]
+position = Vector2(-354, 310)
+
+[node name="DialogueLayer" parent="." instance=ExtResource("7_272bh")]
+visible = false
+
+[node name="door" parent="." instance=ExtResource("8_5vw27")]
+position = Vector2(0, -253)
+
+[connection signal="answered_correctly" from="DialogueLayer" to="door" method="_on_dialogue_layer_answered_correctly"]
